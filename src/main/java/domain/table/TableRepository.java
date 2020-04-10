@@ -16,6 +16,13 @@ public class TableRepository {
         tables.add(new Table(8));
     }
 
+    public static Table of(String tableNumber){
+        return tables().stream()
+            .filter(table -> table.isEquals(tableNumber))
+            .findFirst()
+            .orElseThrow(()->new InvalidTableException(InvalidTableException.INVALID_TABLE_NUMBER));
+    }
+
     public static List<Table> tables() {
         return Collections.unmodifiableList(tables);
     }

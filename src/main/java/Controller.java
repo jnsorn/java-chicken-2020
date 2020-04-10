@@ -19,7 +19,7 @@ public class Controller {
 
 		final List<Table> tables = TableRepository.tables();
 		OutputView.printTables(tables);
-		final int tableNumber = InputView.inputTableNumber();
+		Table table = TableRepository.of(InputView.inputTableNumber());
 
 		if (command.isOrder()) {
 			order();
