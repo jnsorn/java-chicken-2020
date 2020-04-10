@@ -3,13 +3,13 @@ package domain.quantity;
 public class Quantity {
 	private static final int MINIMUM_QUANTITY = 0;
 	private static final int MAXIMUM_QUANTITY = 99;
-	private int quantity;
+	private int number;
 
 	public Quantity(String inputQuantity) {
 		validateType(inputQuantity);
 		int quantity = Integer.parseInt(inputQuantity);
 		validateBounds(quantity);
-		this.quantity = quantity;
+		this.number = quantity;
 	}
 
 	private void validateType(String quantity) {
@@ -26,8 +26,8 @@ public class Quantity {
 		}
 	}
 
-	public Quantity plusOne() {
-		quantity += 1;
+	public Quantity plus(Quantity quantity) {
+		this.number += quantity.number;
 		return this;
 	}
 }

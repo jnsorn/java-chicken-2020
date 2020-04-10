@@ -9,10 +9,9 @@ public class Order {
 	private Map<Menu, Quantity> order;
 
 	public Order() {
-
 	}
 
 	public void add(Menu menu, Quantity quantity) {
-		order.computeIfPresent(menu, (Menu key, Quantity value) -> quantity.plusOne());
+		order.computeIfPresent(menu, (Menu key, Quantity value) -> quantity.plus(value));
 	}
 }

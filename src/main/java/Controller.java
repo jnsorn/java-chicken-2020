@@ -12,13 +12,12 @@ import view.OutputView;
 public class Controller {
 	public void start() {
 		while (true) {
-			run();
+			Command command = Command.of(InputView.inputAction());
+			run(command);
 		}
 	}
 
-	private void run() {
-		Command command = Command.of(InputView.inputAction());
-
+	private void run(Command command) {
 		if (command.isTerminate()) {
 			System.exit(0);
 		}
@@ -32,6 +31,7 @@ public class Controller {
 		}
 
 		if (command.isPay()) {
+
 		}
 	}
 
