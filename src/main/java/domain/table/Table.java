@@ -17,6 +17,10 @@ public class Table {
 		order.add(menu, quantity);
 	}
 
+	public boolean hasOrder(){
+		return order.isExist();
+	}
+
 	public boolean isEquals(String tableNumber) {
 		int number;
 		try {
