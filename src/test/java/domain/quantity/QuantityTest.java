@@ -11,10 +11,6 @@ class QuantityTest {
 	void plus() {
 		Quantity quantity = new Quantity("1");
 		quantity.plus(new Quantity("3"));
-		assertThat(quantity.getNumber()).isEqualTo("4");
-	}
-
-	@Test
-	void getNumber() {
+		assertThat(quantity.getNumber()).isEqualTo(4);
 	}
 }
