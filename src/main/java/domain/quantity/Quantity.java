@@ -28,6 +28,7 @@ public class Quantity {
 
 	public Quantity plus(Quantity quantity) {
 		this.number += quantity.number;
+		validateBounds(this.number);
 		return this;
 	}
 }
