@@ -31,4 +31,8 @@ public class Quantity {
 		validateBounds(this.number);
 		return this;
 	}
+
+	public int getNumber() {
+		return number;
+	}
 }

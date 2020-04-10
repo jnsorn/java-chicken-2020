@@ -1,5 +1,6 @@
 import java.util.List;
 
+import domain.PaymentType;
 import domain.command.Command;
 import domain.menu.Menu;
 import domain.menu.MenuRepository;
@@ -31,7 +32,7 @@ public class Controller {
 		}
 
 		if (command.isPay()) {
-
+			pay(table);
 		}
 	}
 
@@ -41,5 +42,12 @@ public class Controller {
 		Menu menu = MenuRepository.of(InputView.inputMenu());
 		Quantity quantity = new Quantity(InputView.inputQuantity());
 		table.order(menu, quantity);
+	}
+
+	private void pay(Table table) {
+		OutputView.printOrder(table);
+		PaymentType paymentType = PaymentType.of(InputView.inputPaymentType(table));
+		double bill = table.pay(paymentType);
+		OutputView.printBill(bill);
 	}
 }

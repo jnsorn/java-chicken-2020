@@ -1,8 +1,11 @@
 package view;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import domain.menu.Menu;
+import domain.quantity.Quantity;
 import domain.table.Table;
 
 public class OutputView {
@@ -10,6 +13,7 @@ public class OutputView {
 	private static final String TABLE_FORMAT = "| %s |";
 	private static final String BOTTOM_LINE = "└ ─ ┘";
 	private static final String BOTTOM_LINE_WITH_WON = "└ \\ ┘";
+	private static final String BLANK = " ";
 
 	public static void printTables(final List<Table> tables) {
 		System.out.println("## 테이블 목록");
@@ -52,5 +56,23 @@ public class OutputView {
 			System.out.printf(TABLE_FORMAT, table);
 		}
 		System.out.println();
+	}
+
+	public static void printOrder(Table table) {
+		System.out.println("## 주문 내역");
+		System.out.println("## 메뉴 수량 금액");
+		Set<Map.Entry<Menu, Quantity>> orders = table.getOrder().getOrder().entrySet();
+		orders.forEach(order ->
+			System.out.println(
+				order.getKey().getName() + BLANK +
+					order.getValue().getNumber() + BLANK +
+					order.getKey().getPrice()
+			)
+		);
+	}
+
+	public static void printBill(double bill) {
+		System.out.println("## 최종 결제할 금액");
+		System.out.println(bill + "원");
 	}
 }

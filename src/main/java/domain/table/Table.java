@@ -1,6 +1,7 @@
 package domain.table;
 
 import domain.Order;
+import domain.PaymentType;
 import domain.menu.Menu;
 import domain.quantity.Quantity;
 
@@ -17,7 +18,13 @@ public class Table {
 		order.add(menu, quantity);
 	}
 
-	public boolean hasOrder(){
+	public double pay(PaymentType paymentType) {
+		double bill = order.calculatePrice(paymentType);
+		order = new Order();
+		return bill;
+	}
+
+	public boolean hasOrder() {
 		return order.isExist();
 	}
 
@@ -29,6 +36,14 @@ public class Table {
 			throw new InvalidTableException(InvalidTableException.WRONG_TYPE);
 		}
 		return this.number == number;
+	}
+
+	public int getNumber() {
+		return number;
+	}
+
+	public Order getOrder() {
+		return order;
 	}
 
 	@Override

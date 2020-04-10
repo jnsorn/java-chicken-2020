@@ -2,6 +2,8 @@ package view;
 
 import java.util.Scanner;
 
+import domain.table.Table;
+
 public class InputView {
 	private static final Scanner scanner = new Scanner(System.in);
 
@@ -14,7 +16,7 @@ public class InputView {
 	}
 
 	public static String inputTableNumber() {
-		System.out.println("## 주문할 테이블을 선택하세요.");
+		System.out.println("## 테이블을 선택하세요.");
 		return scanner.nextLine();
 	}
 
@@ -25,6 +27,12 @@ public class InputView {
 
 	public static String inputQuantity() {
 		System.out.println("## 메뉴의 수량을 입력하세요.");
+		return scanner.nextLine();
+	}
+
+	public static String inputPaymentType(Table table) {
+		System.out.println("## " + table.getNumber() + "번 테이블의 결제를 진행합니다.");
+		System.out.println("## 신용카드는 1번, 현금은 2번");
 		return scanner.nextLine();
 	}
 }
