@@ -1,10 +1,20 @@
 package domain.table;
 
+import domain.Order;
+import domain.menu.Menu;
+import domain.quantity.Quantity;
+
 public class Table {
 	private final int number;
+	private Order order;
 
 	public Table(final int number) {
 		this.number = number;
+		order = new Order();
+	}
+
+	public void order(Menu menu, Quantity quantity) {
+		order.add(menu, quantity);
 	}
 
 	public boolean isEquals(String tableNumber) {

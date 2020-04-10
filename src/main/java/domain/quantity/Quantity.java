@@ -25,4 +25,9 @@ public class Quantity {
 			throw new InvalidQuantityException(InvalidQuantityException.WRONG_BOUNDS);
 		}
 	}
+
+	public Quantity plusOne() {
+		quantity += 1;
+		return this;
+	}
 }

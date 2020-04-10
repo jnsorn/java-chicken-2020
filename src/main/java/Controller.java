@@ -10,7 +10,13 @@ import view.InputView;
 import view.OutputView;
 
 public class Controller {
-	public void run() {
+	public void start() {
+		while (true) {
+			run();
+		}
+	}
+
+	private void run() {
 		Command command = Command.of(InputView.inputAction());
 
 		if (command.isTerminate()) {
@@ -22,19 +28,18 @@ public class Controller {
 		Table table = TableRepository.of(InputView.inputTableNumber());
 
 		if (command.isOrder()) {
-			order();
+			order(table);
 		}
 
 		if (command.isPay()) {
-			// TODO: 2020-04-10 결제는 전략?
 		}
 	}
 
-	private void order() {
+	private void order(Table table) {
 		final List<Menu> menus = MenuRepository.menus();
 		OutputView.printMenus(menus);
-		// TODO: 2020-04-10 order로 감싸자
 		Menu menu = MenuRepository.of(InputView.inputMenu());
 		Quantity quantity = new Quantity(InputView.inputQuantity());
+		table.order(menu, quantity);
 	}
 }
