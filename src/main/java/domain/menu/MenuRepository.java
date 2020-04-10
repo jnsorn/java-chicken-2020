@@ -1,8 +1,10 @@
-package domain;
+package domain.menu;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import domain.Category;
 
 public class MenuRepository {
     private static final List<Menu> menus = new ArrayList<>();
@@ -16,6 +18,13 @@ public class MenuRepository {
         menus.add(new Menu(6, "순살치킨", Category.CHICKEN, 17_000));
         menus.add(new Menu(21, "콜라", Category.BEVERAGE, 1_000));
         menus.add(new Menu(22, "사이다", Category.BEVERAGE, 1_000));
+    }
+
+    public static Menu of(String menuNumber){
+        return menus().stream()
+            .filter(menu -> menu.isEquals(menuNumber))
+            .findFirst()
+            .orElseThrow(()->new InvalidMenuException(InvalidMenuException.INVALID_MENU_NUMBER));
     }
 
     public static List<Menu> menus() {
