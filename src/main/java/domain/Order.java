@@ -15,7 +15,10 @@ public class Order {
 	}
 
 	public void add(Menu menu, Quantity quantity) {
-		order.computeIfPresent(menu, (Menu key, Quantity value) -> quantity.plus(value));
+		if (order.containsKey(menu)) {
+			quantity = order.get(menu).plus(quantity);
+		}
+		order.put(menu, quantity);
 	}
 
 	public boolean isExist() {
