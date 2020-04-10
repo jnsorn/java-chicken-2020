@@ -35,5 +35,6 @@ public class Controller {
 		OutputView.printMenus(menus);
 		// TODO: 2020-04-10 order로 감싸자
 		Menu menu = MenuRepository.of(InputView.inputMenu());
+		Quantity quantity = new Quantity(InputView.inputQuantity());
 	}
 }
