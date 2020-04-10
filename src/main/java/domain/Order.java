@@ -11,6 +11,7 @@ public class Order {
 	private static final int NOT_EXIST = 0;
 	private static final int MIN_COUNT_FOR_DISCOUNT = 10;
 	private static final int DISCOUNT_UNIT = 10000;
+	private static final int DEFAULT_VALUE = 1;
 
 	private Map<Menu, Quantity> order;
 	private Map<Category, Integer> groupByCategory;
@@ -51,7 +52,7 @@ public class Order {
 	}
 
 	private double applyCategoryDiscount(int price) {
-		int count = groupByCategory.getOrDefault(Category.CHICKEN, 0);
+		int count = groupByCategory.getOrDefault(Category.CHICKEN, DEFAULT_VALUE);
 		if (count < MIN_COUNT_FOR_DISCOUNT) {
 			return price;
 		}
