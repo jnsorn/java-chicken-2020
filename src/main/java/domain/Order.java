@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import domain.menu.Category;
 import domain.menu.Menu;
 import domain.quantity.Quantity;
 

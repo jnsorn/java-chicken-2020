@@ -1,7 +1,5 @@
 package domain.menu;
 
-import domain.Category;
-
 public class Menu {
 	private final int number;
 	private final String name;
